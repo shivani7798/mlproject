@@ -118,9 +118,9 @@ class DataTransformation:
                 raise CustomException(e,sys)
 
 
-if __name__ == "__main__":
+'''if __name__ == "__main__":
     data_transformation = DataTransformation()
     data_transformation.initiate_data_transformation(
         "artifacts/train.csv",
         "artifacts/test.csv"
-    )
+    )'''
