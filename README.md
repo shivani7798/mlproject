@@ -1,160 +1,221 @@
+
 # mlproject
-## End to End ML project
-Student Performance Prediction — Dataset & Project Overview
-📌 1️⃣ Problem Statement
+## End-to-End Machine Learning Project
 
-Predicting student performance is a common educational analytics problem. The goal of this project is to build a machine learning model that can accurately predict a student's math score based on demographic and academic features like reading and writing scores, parental education level, and preparation status.
+## 🎓 Student Performance Prediction
 
-Correctly predicting student performance can help:
-
-Identify students who may need extra support
-
-Provide insights for educators and administrators
-
-Personalize learning pathways
-
-This is a regression problem where the target variable (math score) is predicted using features that reflect a student’s background and prior academic performance.
-
-📊 2️⃣ Dataset
-
-The dataset used in this project is from Kaggle:
-
-🔗 https://www.kaggle.com/datasets/rdeb26/stud-csv
-
-Summary of the dataset
-Column	Description
-gender	Student gender (male/female)
-race/ethnicity	Ethnic group
-parental level of education	Highest education level of parents
-lunch	Type of lunch (standard / free or reduced)
-test preparation course	Whether completed test prep
-reading score	Score in reading (0–100)
-writing score	Score in writing (0–100)
-math score	Target variable: the score to predict
-
-This dataset consists of students’ scores and related demographic information, and it serves as the foundation for building a predictive model.
-
-🧠 3️⃣ Model
-Model Pipeline
-
-Data preprocessing
-
-Handle categorical variables
-
-Apply scaling/encoding for model-ready input
-
-Training
-
-Fit a regression model to predict math scores
-
-Store both the preprocessor and trained model
-
-Artifacts
-
-preprocessor.pkl – handles transformations for new data
-
-model.pkl – trained regression model
-
-These artifacts are saved and then loaded inside the Flask app for prediction.
-
-💻 4️⃣ How to Run Locally
-Prerequisites
-
-Python 3.11+
-
-Docker
-
-Git
-
-Clone the repository
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
-
-Create a virtual environment
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-
-Install dependencies
-pip install -r requirements.txt
-
-Prepare artifacts
-
-Ensure you have:
-
-artifacts/model.pkl
-artifacts/preprocessor.pkl
-
-Run Flask app locally
-python app.py
-
-
-Open in browser:
-
-http://localhost:5001
-
-🐳 5️⃣ Docker Instructions
-Build the Docker image
-docker build -t studentperformance .
-
-Run locally with Docker
-docker run -p 5001:5001 studentperformance
-
-
-The app will be available at:
-
-http://localhost:5001
-
-🚀 6️⃣ Live Demo
-🔗 Production URL
-
-Access your live deployed app here:
-
-👉 https://studentperformance-latest.onrender.com
-
-This link shows the Flask web app powered by the ML model and hosted on Render using your CI/CD pipeline.
-
-🛠 7️⃣ Additional Notes
-CI/CD
-
-GitHub Actions builds Docker image on push
-
-Manual approval step for production deployment
-
-Deploy hook triggers Render to pull updated image
-
-Model Updates
-
-To update your model:
-
-Retrain locally
-
-Update artifacts/model.pkl and/or preprocessor.pkl
-
-Commit & push
-
-Workflow rebuilds image
-
-Render redeploys updated service
-
-🎯 Summary
-
-This project illustrates a complete ML engineering workflow:
-
-Data exploration with a real-world dataset
-
-Model training and artifact management
-
-REST API using Flask
-
-Containerization using Docker
-
-Continuous deployment with GitHub Actions and Render
 ![Build & Deploy](https://github.com/shivani7798/mlproject/actions/workflows/docker-deploy.yml/badge.svg)
-
-
 [![Production](https://img.shields.io/badge/Production-Live-brightgreen)](https://studentperformance-latest.onrender.com)
-
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![Docker](https://img.shields.io/badge/docker-enabled-blue)
 ![CI/CD](https://img.shields.io/badge/CI/CD-GitHub_Actions-green)
+
+---
+
+## 📌 Problem Statement
+
+Predicting student performance is a key challenge in educational analytics.  
+The objective of this project is to build a **machine learning regression model** that predicts a student’s **math score** based on demographic and academic features such as:
+
+- Gender  
+- Parental education level  
+- Test preparation status  
+- Reading and writing scores  
+
+Accurate predictions can help:
+
+- Identify students who may need additional support  
+- Assist educators in data-driven decision making  
+- Improve learning personalization strategies  
+
+---
+
+## 📊 Dataset
+
+The dataset used in this project is publicly available on Kaggle:
+
+🔗 **Dataset Link:**  
+https://www.kaggle.com/datasets/rdeb26/stud-csv
+
+### Dataset Description
+
+| Feature | Description |
+|-------|-------------|
+| gender | Student gender (male/female) |
+| race/ethnicity | Student ethnicity group |
+| parental level of education | Highest parental education |
+| lunch | Lunch type (standard / free or reduced) |
+| test preparation course | Test preparation completion status |
+| reading score | Reading score (0–100) |
+| writing score | Writing score (0–100) |
+| math score | **Target variable** |
+
+The dataset contains student academic performance and demographic data and is used for supervised regression modeling.
+
+---
+
+## 🧠 Model Overview
+
+### Machine Learning Pipeline
+
+1. **Data Preprocessing**
+   - Handling categorical variables
+   - Feature scaling and encoding
+
+2. **Model Training**
+   - Regression model trained to predict math scores
+   - Pipeline created for reproducible inference
+
+### Model Artifacts
+
+The trained components are saved as artifacts:
+
+- `artifacts/preprocessor.pkl` – preprocessing pipeline  
+- `artifacts/model.pkl` – trained regression model  
+
+These artifacts are loaded by the Flask application during prediction.
+
+---
+
+## 💻 Running the Project Locally
+
+### Prerequisites
+
+- Python 3.11+
+- Docker
+- Git
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/mlproject.git
+cd mlproject
+````
+
+### Create a Virtual Environment
+
+```bash
+python3 -m venv venv
+source venv/bin/activate    # macOS / Linux
+venv\Scripts\activate       # Windows
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Ensure Model Artifacts Exist
+
+```text
+artifacts/model.pkl
+artifacts/preprocessor.pkl
+```
+
+### Run the Flask Application
+
+```bash
+python app.py
+```
+
+Open your browser at:
+
+```
+http://localhost:5001
+```
+
+---
+
+## 🐳 Docker Usage
+
+### Build Docker Image
+
+```bash
+docker build -t studentperformance .
+```
+
+### Run Docker Container
+
+```bash
+docker run -p 5001:5001 studentperformance
+```
+
+Access the application at:
+
+```
+http://localhost:5001
+```
+
+---
+
+## 🚀 Live Deployment
+
+The application is deployed using **Docker + CI/CD + Render**.
+
+🔗 **Live Application URL:**
+👉 [https://studentperformance-latest.onrender.com](https://studentperformance-latest.onrender.com)
+
+---
+
+## 🔁 CI/CD Pipeline
+
+This project uses **GitHub Actions** for continuous integration and deployment:
+
+* Docker image is built on every push to `main`
+* Manual approval required for production deployment
+* Docker image pushed to Docker Hub
+* Render deploy hook pulls the latest image automatically
+
+---
+
+## 🔄 Updating the Model
+
+To update the ML model:
+
+1. Retrain the model locally
+2. Replace:
+
+   * `artifacts/model.pkl`
+   * `artifacts/preprocessor.pkl`
+3. Commit and push changes
+4. CI/CD rebuilds the Docker image
+5. Render redeploys the updated application
+
+No retraining occurs on the server.
+
+---
+
+## 🧰 Tech Stack
+
+* Python 3.11
+* Flask
+* Scikit-learn
+* Pandas, NumPy
+* Docker
+* GitHub Actions
+* Render
+
+---
+
+## 🎯 Project Summary
+
+This project demonstrates a **full end-to-end ML engineering workflow**:
+
+* Real-world dataset usage
+* Model training and persistence
+* Inference API using Flask
+* Containerized deployment with Docker
+* CI/CD automation
+* Cloud hosting on Render
+
+---
+
+## 📎 License
+
+This project is intended for educational and learning purposes.
+
+---
+
+⭐ If you found this project useful, feel free to star the repository!
+
