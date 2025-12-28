@@ -29,6 +29,10 @@ jobs:
           tags: shivani77/studentperformance:latest
           platforms: linux/amd64
           provenance: false
+          
+      - name: Trigger Render Deploy Hook
+        run: |
+        curl -X POST https://api.render.com/deploy/srv-d58d03chg0os73bntia0?key=g8Lq_Yjd6w0
 
   deploy:
     runs-on: ubuntu-latest
