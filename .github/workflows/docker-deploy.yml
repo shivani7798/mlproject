@@ -33,8 +33,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment: production   # 🔐 Approval happens HERE
-    url : https://studentperformance-latest.onrender.com
+    environment: 
+      name : production   # 🔐 Approval happens HERE
+      url : https://studentperformance-latest.onrender.com
 
 
     steps:
